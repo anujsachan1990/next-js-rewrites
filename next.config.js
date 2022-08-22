@@ -13,6 +13,10 @@ module.exports = {
       {
         source: '/:slug*',
         destination: 'https://www.countryroad.com.au/:slug*',
+      },
+      {
+        source: '/:path*',
+        destination: 'https://www.countryroad.com.au/:path*',
       }
     ]
   },
