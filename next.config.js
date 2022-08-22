@@ -11,7 +11,7 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: '/blog/:slug*',
+        source: '/:slug*',
         destination: 'https://www.countryroad.com.au/:slug*',
       }
     ]
