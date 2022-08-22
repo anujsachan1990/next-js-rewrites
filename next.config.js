@@ -1,19 +1,10 @@
-/** @type {import('next').NextConfig} */
-
-const rewrites = async() => {
-  return [
-    {
-      source: '/test',
-      destination: '/',
-    },
-  ]
+module.exports = {
+  async rewrites() {
+    return [
+      {
+        source: '/',
+        destination: 'https://www.countryroad.com.au',
+      }
+    ]
+  },
 }
-
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-  rewrites
-}
-
-
-module.exports = nextConfig
