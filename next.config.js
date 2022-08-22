@@ -4,7 +4,7 @@ const rewrites = () => {
   return [
     {
       source: '/',
-      destination: 'https://www.countryroad.com.au/',
+      destination: '/test',
       permanent: true,
     },
   ]
