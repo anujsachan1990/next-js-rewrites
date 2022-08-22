@@ -1,7 +1,12 @@
 module.exports = {
   async rewrites() {
-    return [
-      { "source": "(.*)", "destination": "https://example.com/bruno$1" }
-    ]
+    return {
+      fallback: [
+        {
+          source: '/:path*',
+          destination: `https://custom-routes-proxying-endpoint.vercel.app/:path*`,
+        },
+      ],
+    }
   },
 }
