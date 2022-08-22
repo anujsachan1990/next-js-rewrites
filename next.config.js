@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
 
-const rewrites = () => {
+const rewrites = async() => {
   return [
     {
-      source: '/',
-      destination: '/test',
-      permanent: true,
+      source: '/test',
+      destination: '/',
     },
   ]
 }
