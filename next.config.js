@@ -1,12 +1,19 @@
 module.exports = {
+  async redirects() {
+    return [
+      {
+        source: '/about',
+        destination: '/',
+        permanent: true,
+      },
+    ]
+  },
   async rewrites() {
-    return {
-      fallback: [
-        {
-          source: '/:path*',
-          destination: `https://custom-routes-proxying-endpoint.vercel.app/:path*`,
-        },
-      ],
-    }
+    return [
+      {
+        source: '/blog',
+        destination: 'https://www.countryroad.com.au/',
+      }
+    ]
   },
 }
