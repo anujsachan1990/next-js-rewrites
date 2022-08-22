@@ -2,7 +2,7 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: '/',
+        source: '/test',
         destination: 'https://www.countryroad.com.au',
       }
     ]
