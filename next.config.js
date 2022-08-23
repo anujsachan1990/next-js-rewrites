@@ -1,31 +1,33 @@
 module.exports = {
-  basePath: '',
-  reactStrictMode: true,
-  trailingSlash: true,
+  // basePath: '',
+  // reactStrictMode: true,
+
+  // // trailingSlash: true,
+  // // async rewrites() {
+  // //   return [
+  // //     {
+  // //       source: '/:slug*/',
+  // //       destination: 'https://www.countryroad.com.au/:slug*/',
+  // //     },
+  // //     {
+  // //       source: '/:slug*',
+  // //       destination: 'https://www.countryroad.com.au/:slug*',
+  // //     }
+  // //   ]
+  // // },
   // async rewrites() {
-  //   return [
-  //     {
-  //       source: '/:slug*/',
-  //       destination: 'https://www.countryroad.com.au/:slug*/',
-  //     },
-  //     {
-  //       source: '/:slug*',
-  //       destination: 'https://www.countryroad.com.au/:slug*',
-  //     }
-  //   ]
+  //   console.log("qwdwqdwqwqdqw")
+  //   return {
+  //     fallback: [
+  //       {
+  //         source: '/:path*/',
+  //         destination: `https://www.countryroad.com.au/:path*/`,
+  //       },
+  //       {
+  //         source: '/:path*',
+  //         destination: `https://www.countryroad.com.au/:path*`,
+  //       }
+  //     ],
+  //   }
   // },
-  async rewrites() {
-    return {
-      fallback: [
-        {
-          source: '/:path*/',
-          destination: `https://www.countryroad.com.au/:path*/`,
-        },
-        {
-          source: '/:path*',
-          destination: `https://www.countryroad.com.au/:path*`,
-        }
-      ],
-    }
-  },
 }
