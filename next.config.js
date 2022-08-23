@@ -13,17 +13,13 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: '/:slug*',
-        destination: 'https://www.countryroad.com.au/:slug*',
+        source: '/:slug*/',
+        destination: 'https://www.countryroad.com.au/:slug*/',
       },
       {
-        source: '/:path*',
-        destination: 'https://www.countryroad.com.au/:path*',
-      },
-      {
-        source: '/anuj/:slug*',
-        destination: 'https://www.davidjones.com/:slug*',
-      },
+        source: '/:path*/',
+        destination: 'https://www.countryroad.com.au/:path*/',
+      }
     ]
   },
 }
