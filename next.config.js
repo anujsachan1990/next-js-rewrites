@@ -1,8 +1,9 @@
 module.exports = {
+  trailingSlash: true,
   // basePath: '',
   // reactStrictMode: true,
 
-  // // trailingSlash: true,
+  // trailingSlash: true,
   // // async rewrites() {
   // //   return [
   // //     {
