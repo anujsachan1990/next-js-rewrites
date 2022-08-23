@@ -20,6 +20,10 @@ module.exports = {
           source: '/:path*',
           destination: `https://www.countryroad.com.au/:path*`,
         },
+        {
+          source: '/:path*/',
+          destination: `https://www.countryroad.com.au/:path*/`,
+        },
       ],
     }
   },
