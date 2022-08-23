@@ -1,5 +1,5 @@
 module.exports = {
-  basePath: '',
+  basePath: 'https://next-js-rewrites-anuj.vercel.app',
   reactStrictMode: true,
   trailingSlash: true,
   // async rewrites() {
