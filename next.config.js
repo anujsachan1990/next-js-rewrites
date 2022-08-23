@@ -1,5 +1,5 @@
 module.exports = {
-  basePath: '/',
+  basePath: '',
   reactStrictMode: true,
   trailingSlash: true,
   // async rewrites() {
