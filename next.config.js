@@ -1,5 +1,6 @@
 module.exports = {
   reactStrictMode: true,
+  trailingSlash: true,
   async redirects() {
     return [
       {
@@ -18,7 +19,11 @@ module.exports = {
       {
         source: '/:path*',
         destination: 'https://www.countryroad.com.au/:path*',
-      }
+      },
+      {
+        source: '/anuj/:slug*',
+        destination: 'https://www.davidjones.com/:slug*',
+      },
     ]
   },
 }
