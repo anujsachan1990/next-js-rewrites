@@ -17,13 +17,13 @@ module.exports = {
     return {
       fallback: [
         {
-          source: '/:slug*',
-          destination: `https://www.countryroad.com.au/:slug*`,
-        },
-        {
           source: '/:slug*/',
           destination: `https://www.countryroad.com.au/:slug*/`,
         },
+        {
+          source: '/:slug*',
+          destination: `https://www.countryroad.com.au/:slug*`,
+        }
       ],
     }
   },
