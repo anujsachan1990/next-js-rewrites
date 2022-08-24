@@ -6,7 +6,7 @@ export const config = {
 export default async function handler(req) {
   console.log('proxy is here');
   const authorization = req.cookies.get('authorization')
-  return fetch('http://localhost:3000/test', {
+  return fetch('https://next-js-rewrites-anuj.vercel.app/test/', {
     method: req.method,
     headers: {
       authorization,
