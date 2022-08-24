@@ -4,13 +4,11 @@ export const config = {
 
 export default async function handler(req) {
   console.log('proxy is here');
-  const authorization = req.cookies.get('authorization')
-  return fetch('https://next-js-rewrites-anuj.vercel.app', {
+  const x = fetch('http://localhost:3000/api/hello/', {
     method: req.method,
-    headers: {
-      authorization,
-    },
     redirect: 'manual',
   })
+  console.log("xxxxddddddddd", x)
+  return x
 
 }
