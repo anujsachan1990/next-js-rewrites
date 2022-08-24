@@ -8,7 +8,7 @@ export default function Home({ html }) {
 export async function getServerSideProps(context) {
   const { req } = context;
 
-  const x = await fetch('http://localhost:3000/api/proxy/')
+  const x = await fetch('https://next-js-rewrites-anuj.vercel.app/api/proxy/')
   const html = await x.text()
   console.log('response from proxy')
   return {
