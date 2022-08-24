@@ -4,7 +4,7 @@ export const config = {
 }
 
 export default async (req) => {
-  const url = new URL(req.nextUrl.pathname, 'https://www.countryroad.com.au/')
+  const url = new URL(req.nextUrl.pathname, '/test/')
   console.log("test---->", url.href)
   // Return rewrited path
   return NextResponse.rewrite(url)
