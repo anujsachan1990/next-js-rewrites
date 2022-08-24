@@ -22,11 +22,11 @@ module.exports = {
       fallback: [
         {
           source: '/:path*/',
-          destination: `https://www.countryroad.com.au/:path*/`,
+          destination: `https://www.davidjones.com/:path*/`,
         },
         {
           source: '/:path*',
-          destination: `https://www.countryroad.com.au/:path*`,
+          destination: `https://www.davidjones.com/:path*`,
         }
       ],
     }
