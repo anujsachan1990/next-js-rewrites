@@ -12,7 +12,7 @@ export async function getServerSideProps(context) {
   console.log('response from proxy')
   return {
     props: {
-      html: html.replaceAll('https://www.countryroad.com.au/','/')
+      html: html.replaceAll('Golf Australia Partners','Anuj is here form code')
     }, // will be passed to the page component as props
   }
 }
