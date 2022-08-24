@@ -16,19 +16,19 @@ module.exports = {
   // //     }
   // //   ]
   // // },
-  async rewrites() {
-    console.log("qwdwqdwqwqdqw")
-    return {
-      fallback: [
-        {
-          source: '/:path*/',
-          destination: `https://www.countryroad.com.au/:path*/`,
-        },
-        {
-          source: '/:path*',
-          destination: `https://www.countryroad.com.au/:path*`,
-        }
-      ],
-    }
-  },
+  // async rewrites() {
+  //   console.log("qwdwqdwqwqdqw")
+  //   return {
+  //     fallback: [
+  //       {
+  //         source: '/:path*/',
+  //         destination: `https://www.countryroad.com.au/:path*/`,
+  //       },
+  //       {
+  //         source: '/:path*',
+  //         destination: `https://www.countryroad.com.au/:path*`,
+  //       }
+  //     ],
+  //   }
+  // },
 }
