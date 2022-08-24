@@ -1,3 +1,4 @@
+import { NextResponse } from 'next/server'
 export const config = {
   runtime: 'experimental-edge',
 }
