@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   const x = fetch('https://www.countryroad.com.au', {
     method: req.method,
     redirect: 'manual',
-    credentials: 'same-origin'
+    credentials: 'include'
   })
 
   return x
