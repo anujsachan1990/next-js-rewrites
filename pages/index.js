@@ -5,7 +5,7 @@ export default function Home({ html }) {
   <div
     dangerouslySetInnerHTML={{
       __html: html
-    }} styles={{"height": "100vh"}}></div>
+    }} style={"height": "100vh"}></div>
     </>)
 }
 
