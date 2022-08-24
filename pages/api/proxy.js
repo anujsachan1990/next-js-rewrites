@@ -3,11 +3,8 @@ export const config = {
 }
 
 export default async function handler(req, res) {
-
-
-
   console.log('proxy is here');
-  const x = fetch('https://www.countryroad.com.au/', {
+  const x = fetch('https://golf.org.au/', {
     method: req.method,
     redirect: 'manual',
     headers: {
