@@ -17,7 +17,7 @@ module.exports = {
   // //   ]
   // // },
   async rewrites() {
-    console.log("qwdwqdwqwqdqw")
+ 
     return {
       fallback: [
         {
