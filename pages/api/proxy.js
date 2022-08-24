@@ -4,7 +4,7 @@ export const config = {
 }
 
 export default async (req) => {
-  const url = new URL(req.nextUrl.pathname, '/test/')
+  const url = new URL(req.nextUrl.pathname, 'https://next-js-rewrites-anuj.vercel.app/test/')
   console.log("test---->", url.href)
   // Return rewrited path
   return NextResponse.rewrite(url)
