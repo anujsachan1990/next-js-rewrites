@@ -1,8 +1,12 @@
 export default function Home({ html }) {
-  return (<div
+  return (
+  <>
+  a simple text from the component
+  <div
     dangerouslySetInnerHTML={{
       __html: html
-    }}></div>)
+    }}></div>
+    </>)
 }
 
 export async function getServerSideProps(context) {
