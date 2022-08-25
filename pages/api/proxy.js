@@ -10,6 +10,9 @@ export default async function handler(req) {
     method: req.method,
     redirect: 'manual',
   })
+  if (!['html', 'css', 'javascript'].some((type) => response.headers.get('content-type').includes(type))) {
+    return response
+  }
   const text = await response.text()
   const modifiedtext = text.replaceAll('Latest News', 'anuj is here')
   const { headers } = response
