@@ -11,7 +11,8 @@ export default async function handler(req) {
     redirect: 'manual',
   })
   const text = await response.text()
-  const modifiedtext = text.replaceAll('Latest News','anuj is here')
-  return new Response(modifiedtext, response)
+  const modifiedtext = text.replaceAll('Latest News', 'anuj is here')
+  const { headers } = response
+  return new Response(modifiedtext, { headers })
 }
 
