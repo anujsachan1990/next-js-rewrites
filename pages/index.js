@@ -18,7 +18,7 @@ export async function getServerSideProps(context) {
   console.log(html)
   return {
     props: {
-      html: html
+      html: html.replaceAll('countryroad.com.au',''),
     }, // will be passed to the page component as props
   }
 }
