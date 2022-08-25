@@ -4,9 +4,7 @@ export const config = {
 }
 
 export default async function handler(req) {
-  console.log('proxy is here');
-
-  const response = await fetch(`https://www.golf.org.au${req.nextUrl.pathname}`, {
+  const response = await fetch(`${process.env.REWRITE_HOST}${req.nextUrl.pathname}`, {
     method: req.method,
     redirect: 'manual',
   })
@@ -14,7 +12,7 @@ export default async function handler(req) {
     return response
   }
   const text = await response.text()
-  const modifiedtext = text.replaceAll('Latest News', 'anuj is here')
+  const modifiedtext = text.replaceAll(process.env.REWRITE_HOST, req.nextUrl.origin)
   const { headers } = response
   return new Response(modifiedtext, { headers })
 }
