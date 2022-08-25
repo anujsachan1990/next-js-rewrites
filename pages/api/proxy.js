@@ -5,14 +5,12 @@ export const config = {
 
 export default async function handler(req) {
   console.log('proxy is here');
-  const authorization = req.cookies.get('authorization')
-  return fetch('https://www.countryroad.com.au/', {
+
+  const response = await fetch(`https://www.countryroad.com.au${req.nextUrl.pathname}`, {
     method: req.method,
-    headers: {
-      authorization,
-    },
     redirect: 'manual',
   })
 
+  return response
 }
 

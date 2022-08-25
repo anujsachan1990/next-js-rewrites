@@ -2,14 +2,17 @@ import { NextResponse } from 'next/server'
 
 
 
-export async function middleware(req) {
+export async function middleware(request) {
+  const url = request.nextUrl
+  if (url.pathname.startsWith('/_next')) {
+    return
+  }
 
-  // cont url = req.url
-
-  // // Rewrite to the correct url
-
-  // const url = new URL(req.nextUrl.pathname, 'https://www.countryroad.com.au/')
-  // console.log("test---->", url.href)
-  // // Return rewrited path
-  // return NextResponse.rewrite(url)
+  url.pathname = '/api/proxy'
+  return NextResponse.rewrite(url)
 }
+
+
+
+
+
