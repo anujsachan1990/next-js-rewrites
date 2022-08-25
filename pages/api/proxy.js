@@ -6,7 +6,7 @@ export const config = {
 export default async function handler(req) {
   console.log('proxy is here');
 
-  const response = await fetch(`https://golf.org.au${req.nextUrl.pathname}`, {
+  const response = await fetch(`https://www.golf.org.au${req.nextUrl.pathname}`, {
     method: req.method,
     redirect: 'manual',
   })
