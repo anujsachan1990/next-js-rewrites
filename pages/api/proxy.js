@@ -11,11 +11,11 @@ export default async function handler(req) {
     credentials: 'same-origin',
     redirect: 'manual',
   })
-  if (!!response.headers.get('content-type')) {
+
     if (!['html', 'css', 'javascript'].some((type) => response.headers.get('content-type').includes(type))) {
       return response
     }
-  }
+
 
 
   const text = await response.text()
