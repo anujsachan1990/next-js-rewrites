@@ -10,18 +10,12 @@ export default async function handler(req) {
     method: req.method,
     withCredentials: true,
     redirect: 'manual',
+    mode: 'cors',
+    credentials: 'include',
   })
-  if (!!response.headers.get('content-type')) {
-    return new Response(response.body, {
-      status: response.status,
-      headers: {
-        'content-type': response.headers.get('content-type'),
-        'set-cookie': response.headers.get('set-cookie'),
-      },
-    })
 
-  }
   if (!['html', 'css', 'javascript'].some((type) => response.headers.get('content-type').includes(type))) {
+    
     return response
   }
 
