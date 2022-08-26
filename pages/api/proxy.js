@@ -1,14 +1,10 @@
-import { getCookie } from 'cookies-next';
-
-
-
 export const config = {
   runtime: 'experimental-edge',
 }
 
 export default async function handler(req) {
 
-  console.log('getCookies()', getCookie('email'))
+  console.log('cookies', req.cookies)
   
   const response = await fetch(`${process.env.REWRITE_HOST}${req.nextUrl.pathname}`, {
     method: req.method,
