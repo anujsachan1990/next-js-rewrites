@@ -8,10 +8,6 @@ export default async function handler(req) {
 
   const response = await fetch(`${process.env.REWRITE_HOST}${req.nextUrl.pathname}`, {
     method: req.method,
-    withCredentials: true,
-    redirect: 'manual',
-    mode: 'cors',
-    credentials: 'include',
   })
 
   if (!['html', 'css', 'javascript'].some((type) => response.headers.get('content-type').includes(type))) {
