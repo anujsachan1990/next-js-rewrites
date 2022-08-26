@@ -1,3 +1,4 @@
+
 export const config = {
   runtime: 'experimental-edge',
 }
@@ -8,6 +9,7 @@ export default async function handler(req) {
 
   const response = await fetch(`${process.env.REWRITE_HOST}${req.nextUrl.pathname}`, {
     method: req.method,
+    mode: 'cors',   
   })
 
   if (!['html', 'css', 'javascript'].some((type) => response.headers.get('content-type').includes(type))) {
