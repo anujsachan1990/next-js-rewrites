@@ -1,4 +1,4 @@
- 
+
 export const config = {
   runtime: 'experimental-edge',
 }
@@ -9,11 +9,12 @@ export default async function handler(req) {
 
   const response = await fetch(`${process.env.REWRITE_HOST}${req.nextUrl.pathname}`, {
     method: req.method,
-  
-  })
 
-  if (!['html', 'css', 'javascript'].some((type) => response.headers.get('content-type').includes(type))) {
-    
+  })
+  console.log("response.headers", response.headers.get('content-type'))
+
+  if (!!response.headers.get('content-type') && !['html', 'css', 'javascript'].some((type) => response.headers.get('content-type').includes(type))) {
+
     return response
   }
 
