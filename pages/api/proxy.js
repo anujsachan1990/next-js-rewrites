@@ -29,7 +29,7 @@ export default async function handler(req) {
   req.headers.forEach((value, key) => {
     requestModifiedHeader.push({ [key]: value })
   })
-  const newUrl = `${req.nextUrl.pathname}${req.nextUrl.search}`;
+  const newUrl = `${req.nextUrl.pathname}${req.nextUrl.search}`.replaceAll('(', '%28').replaceAll(')', '%29');
 
   console.log('requestModifiedHeader', req.nextUrl.href, newUrl, requestModifiedHeader)
 
