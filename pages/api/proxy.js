@@ -11,7 +11,10 @@ export default async function handler(req) {
 
 
   req.headers.forEach((value, key) => {
-    requestHeader.push({ [key]: value })
+    if(!key.startsWith('x-')) {
+      requestHeader.push({ [key]: value })
+    }
+  
   })
 
 
