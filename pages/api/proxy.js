@@ -58,7 +58,7 @@ export default async function handler(req, res) {
 
   })
 
-  myHeaders.headers.forEach((value, key) => {
+  myHeaders.forEach((value, key) => {
     responseModifiedHeader.push({ [key]: value })
   })
 
