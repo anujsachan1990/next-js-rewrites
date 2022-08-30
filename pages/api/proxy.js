@@ -39,8 +39,8 @@ response.headers.forEach((value, key) => {
 console.log('responseHeader', responseHeader)
 
 responseHeader.map((item) => {
-  req.headers.set(Object.keys(item)[index], item[Object.keys(item)[index]].replaceAll('.countryroad.com.au', '.vercel.app'))
-  req.headers.set(Object.keys(item)[index], item[Object.keys(item)[index]].replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app'))
+  responseHeader.headers.set(Object.keys(item)[index], item[Object.keys(item)[index]].replaceAll('.countryroad.com.au', '.vercel.app'))
+  responseHeader.headers.set(Object.keys(item)[index], item[Object.keys(item)[index]].replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app'))
 })
 
 // responseHeader.replaceAll('.countryroad.com.au', '.vercel.app')
