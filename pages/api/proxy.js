@@ -38,9 +38,9 @@ export default async function handler(req) {
 
   console.log('responseHeader', responseHeader)
 
-  responseHeader.map((item) => {
-    responseHeader.headers.set(Object.keys(item)[0], item[Object.keys(item)[0]].replaceAll('.countryroad.com.au', '.vercel.app').replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app'))
-  })
+  // responseHeader.map((item) => {
+  //   responseHeader.headers.set(Object.keys(item)[0], item[Object.keys(item)[0]].replaceAll('.countryroad.com.au', '.vercel.app').replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app'))
+  // })
 
   // responseHeader.replaceAll('.countryroad.com.au', '.vercel.app')
   // responseHeader.replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app')
