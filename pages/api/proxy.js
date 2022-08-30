@@ -9,7 +9,7 @@ export default async function handler(req) {
 
   console.log('cookies', req.cookies)
   req.headers.forEach((value, key) => {
-    requestHeader.push({ [key.toString()]: value })
+    requestHeader.push({ [key]: value })
   })
 
 
@@ -22,6 +22,11 @@ export default async function handler(req) {
     req.headers.set(Object.keys(item)[0], item[Object.keys(item)[0]].replaceAll('.vercel.app', '.countryroad.com.au').replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au'))
 
   })
+
+  req.headers.forEach((value, key) => {
+    requestHeader.push({ [key]: value })
+  })
+
   //req.headers.set(':authority','www.countryroad.com.au')
 
   console.log('requestHeaderModified', requestHeader)
@@ -33,7 +38,7 @@ export default async function handler(req) {
   console.log("response header--->")
 
   response.headers.forEach((value, key) => {
-    responseHeader.push({ [key.toString()]: value })
+    responseHeader.push({ [key]: value })
   })
 
   console.log('responseHeader', responseHeader)
