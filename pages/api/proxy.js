@@ -15,7 +15,7 @@ export default async function handler(req) {
   })
 
 
-  console.log('requestHeader', requestHeader)
+  console.log('requestHeadwer', requestHeader)
 
 const host = req.headers.get('host')
 
@@ -33,19 +33,19 @@ const host = req.headers.get('host')
   console.log('requestModifiedHeader', requestModifiedHeader)
 
 
-  console.log('next url', req.nextUrl);
+ // console.log('next url', req.nextUrl);
   const newUrl = `${req.nextUrl.pathname}${req.nextUrl.search}`;
   const response = await fetch(`${process.env.REWRITE_HOST}${newUrl}`, {
     method: req.method
 
   })
-  console.log("response header--->")
+  //console.log("response header--->")
 
   response.headers.forEach((value, key) => {
     responseHeader.push({ [key]: value })
   })
 
-  console.log('responseHeader', responseHeader)
+  // console.log('responseHeader', responseHeader)
 
   const myHeaders = new Headers();
 
@@ -65,7 +65,7 @@ const host = req.headers.get('host')
 
 
 
-  console.log('responseHeaderModified', responseModifiedHeader)
+  // console.log('responseHeaderModified', responseModifiedHeader)
 
   if (!!response.headers.get('content-type') &&
     !['html', 'css', 'javascript'].some((type) => response.headers.get('content-type').includes(type))) {
@@ -76,8 +76,8 @@ const host = req.headers.get('host')
 
   const text = await response.text()
   const modifiedtext = text.replaceAll(process.env.REWRITE_HOST, req.nextUrl.origin)
-  const { headers } = response
-  console.log("response headers", headers)
+  // const { headers } = response
+  // console.log("response headers", headers)
   return new Response(modifiedtext, { headers: myHeaders })
 }
 
