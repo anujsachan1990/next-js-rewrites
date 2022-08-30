@@ -34,7 +34,8 @@ export default async function handler(req) {
 
 
   console.log('next url', req.nextUrl);
-  const response = await fetch(`${process.env.REWRITE_HOST}${req.nextUrl.pathname}`, {
+  const newUrl = `${req.nextUrl.pathname}${req.nextUrl.search}`.replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au');
+  const response = await fetch(`${process.env.REWRITE_HOST}${newUrl}`, {
     method: req.method
 
   })
