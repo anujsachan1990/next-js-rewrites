@@ -21,7 +21,9 @@ export default async function handler(req, res) {
   // requestHeader.replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au')
 
   requestHeader.map((item) => {
-    req.headers.set(Object.keys(item)[0], item[Object.keys(item)[0]].replaceAll('.vercel.app', '.countryroad.com.au').replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au'))
+    req.headers.set(Object.keys(item)[0],
+      item[Object.keys(item)[0]].replaceAll('.vercel.app', '.countryroad.com.au')
+        .replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au'))
 
   })
 
@@ -46,7 +48,15 @@ export default async function handler(req, res) {
   console.log('responseHeader', responseHeader)
 
   responseHeader.map((item) => {
-    response.headers.set(Object.keys(item)[0], item[Object.keys(item)[0]].replaceAll('.countryroad.com.au', '.vercel.app').replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app'))
+
+    if(Object.keys(item)[0]==='set-cookie'){
+      res.setHeader(Object.keys(item)[0],
+      item[Object.keys(item)[0]].replaceAll('.countryroad.com.au', '.vercel.app')
+        .replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app'))  
+    }
+    // response.headers.set(Object.keys(item)[0],
+    //   item[Object.keys(item)[0]].replaceAll('.countryroad.com.au', '.vercel.app')
+    //     .replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app'))
 
   })
 
@@ -59,7 +69,9 @@ export default async function handler(req, res) {
 
   console.log('responseHeaderModified', responseModifiedHeader)
 
-  if (!!response.headers.get('content-type') && !['html', 'css', 'javascript'].some((type) => response.headers.get('content-type').includes(type))) {
+  if (!!response.headers.get('content-type') &&
+    !['html', 'css', 'javascript'].some((type)
+      => response.headers.get('content-type').includes(type))) {
 
     return response
   }
