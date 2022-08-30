@@ -11,10 +11,13 @@ export default async function handler(req) {
   req.headers.forEach((value, key) => {
     requestHeader += `${key}: ${value}\n`
   })
+  
   console.log('requestHeader', requestHeader)
   
   requestHeader.replaceAll( '.vercel.app', '.countryroad.com.au')
   requestHeader.replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au' )
+  
+  req.headers.set(':authority','www.countryroad.com.au')
   
   console.log('requestHeaderModified', requestHeader)
 
