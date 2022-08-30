@@ -33,7 +33,7 @@ export default async function handler(req) {
   console.log('requestModifiedHeader', requestModifiedHeader)
 
 
-
+  console.log('next url', req.nextUrl);
   const response = await fetch(`${process.env.REWRITE_HOST}${req.nextUrl.pathname}`, {
     method: req.method
 
