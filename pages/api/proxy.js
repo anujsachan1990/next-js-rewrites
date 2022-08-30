@@ -25,7 +25,7 @@ export default async function handler(req) {
   requestHeader.map((item) => {
     req.headers.set(Object.keys(item)[0],
       item[Object.keys(item)[0]].replaceAll(host, 'www.visitvictoria.com')
-        .replaceAll('.vercel.app', '.countryroad.com.au'))
+        .replaceAll('.vercel.app', '.visitvictoria.com'))
 
   })
 
@@ -61,7 +61,7 @@ export default async function handler(req) {
 
     myHeaders.set(Object.keys(item)[0],
       item[Object.keys(item)[0]].replaceAll('www.visitvictoria.com', host)
-        .replaceAll('.countryroad.com.au', '.vercel.app')
+        .replaceAll('.visitvictoria.com', '.vercel.app')
     )
 
   })
