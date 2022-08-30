@@ -18,9 +18,9 @@ console.log('requestHeader', requestHeader)
 // requestHeader.replaceAll('.vercel.app', '.countryroad.com.au')
 // requestHeader.replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au')
 
-requestHeader.map((item) => {
-  req.headers.set(item.key, item.value.replaceAll('.vercel.app', '.countryroad.com.au'))
-  req.headers.set(item.key, item.value.replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au'))
+requestHeader.map((item, index) => {
+  req.headers.set(Object.keys(item)[index], item[Object.keys(item)[index]].replaceAll('.vercel.app', '.countryroad.com.au'))
+  req.headers.set(Object.keys(item)[index], item[Object.keys(item)[index]].replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au'))
 })
 //req.headers.set(':authority','www.countryroad.com.au')
 
@@ -39,8 +39,8 @@ response.headers.forEach((value, key) => {
 console.log('responseHeader', responseHeader)
 
 responseHeader.map((item) => {
-  response.headers.set(item.key, item.value.replaceAll('.countryroad.com.au', '.vercel.app'))
-  response.headers.set(item.key, item.value.replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app'))
+  req.headers.set(Object.keys(item)[index], item[Object.keys(item)[index]].replaceAll('.countryroad.com.au', '.vercel.app'))
+  req.headers.set(Object.keys(item)[index], item[Object.keys(item)[index]].replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app'))
 })
 
 // responseHeader.replaceAll('.countryroad.com.au', '.vercel.app')
