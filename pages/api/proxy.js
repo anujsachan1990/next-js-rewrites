@@ -9,7 +9,7 @@ export default async function handler(req) {
   let requestHeader = '';
   let requestHeaderModified = '';
 
-  console.log('cookies', req.cookies)
+  console.log('headers', req.headers)
   req.headers.forEach((value, key) => {
     requestHeader += `${key}: ${value}\n`
   })
