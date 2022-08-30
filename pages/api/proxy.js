@@ -55,7 +55,7 @@ export default async function handler(req) {
 
     myHeaders.append(Object.keys(item)[0],
       item[Object.keys(item)[0]].replaceAll('www.countryroad.com.au', host)
-        .replaceAll('.countryroad.com.au', host)
+        .replaceAll('.countryroad.com.au', '.vercel.app')
     )
 
   })
