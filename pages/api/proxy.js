@@ -29,13 +29,13 @@ export default async function handler(req) {
   req.headers.forEach((value, key) => {
     requestModifiedHeader.push({ [key]: value })
   })
-  const newUrl = `${req.nextUrl.pathname}${req.nextUrl.search}`.replaceAll('(', '%28').replaceAll(')', '%29');
+  const newUrl = `${req.nextUrl.pathname}${req.nextUrl.search}`.replaceAll('(', '%28').replaceAll(')', '%29').replaceAll('%2A', '%2a').replaceAll('%2B', '%2b').replaceAll('%2C', '%2c').replaceAll('%2D', '%2d').replaceAll('%2E', '%2e').replaceAll('%2F', '%2f')
 
   console.log('requestModifiedHeader', req.nextUrl.href, newUrl, requestModifiedHeader)
 
 
   // console.log('next url', req.nextUrl);
- 
+
   const response = await fetch(`${process.env.REWRITE_HOST}${newUrl}`, {
     method: req.method
 
