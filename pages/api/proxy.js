@@ -17,11 +17,11 @@ export default async function handler(req) {
 
   console.log('requestHeader', requestHeader)
 
-
+const host = req.headers.get('host')
 
   requestHeader.map((item) => {
     req.headers.set(Object.keys(item)[0],
-      item[Object.keys(item)[0]].replaceAll(process.env.VERCEL_URL, 'www.countryroad.com.au')
+      item[Object.keys(item)[0]].replaceAll(host, 'www.countryroad.com.au')
         .replaceAll('.vercel.app', '.countryroad.com.au'))
 
   })
@@ -53,8 +53,8 @@ export default async function handler(req) {
 
 
     myHeaders.set(Object.keys(item)[0],
-      item[Object.keys(item)[0]].replaceAll('www.countryroad.com.au', process.env.VERCEL_URL)
-        .replaceAll('.countryroad.com.au', process.env.VERCEL_URL)
+      item[Object.keys(item)[0]].replaceAll('www.countryroad.com.au', host)
+        .replaceAll('.countryroad.com.au', host)
     )
 
   })
