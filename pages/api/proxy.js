@@ -12,11 +12,11 @@ export default async function handler(req) {
 
   })
   console.log("response header--->")
-
-  forEach(response.headers, (value, key) => {
-
+  
+  response.headers.forEach((value, key) => {
     console.log(key, ':', value)
   })
+
 
   if (!!response.headers.get('content-type') && !['html', 'css', 'javascript'].some((type) => response.headers.get('content-type').includes(type))) {
 
