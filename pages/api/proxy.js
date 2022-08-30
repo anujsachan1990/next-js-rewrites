@@ -47,20 +47,18 @@ export default async function handler(req, res) {
 
   console.log('responseHeader', responseHeader)
 
+  const myHeaders = new Headers();
+
   responseHeader.map((item) => {
 
-    if(Object.keys(item)[0]==='set-cookie'){
-      response.headers.set(Object.keys(item)[0],
+ 
+    myHeaders.set(Object.keys(item)[0],
       item[Object.keys(item)[0]].replaceAll('.countryroad.com.au', '.vercel.app')
-        .replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app'))  
-    }
-    // response.headers.set(Object.keys(item)[0],
-    //   item[Object.keys(item)[0]].replaceAll('.countryroad.com.au', '.vercel.app')
-    //     .replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app'))
+        .replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app'))
 
   })
 
-  response.headers.forEach((value, key) => {
+  myHeaders.headers.forEach((value, key) => {
     responseModifiedHeader.push({ [key]: value })
   })
 
@@ -80,6 +78,6 @@ export default async function handler(req, res) {
   const modifiedtext = text.replaceAll(process.env.REWRITE_HOST, req.nextUrl.origin)
   const { headers } = response
   console.log("response headers", headers)
-  return new Response(modifiedtext, { headers })
+  return new Response(modifiedtext, { headers : myHeaders })
 }
 
