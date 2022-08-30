@@ -70,9 +70,7 @@ export default async function handler(req, res) {
   console.log('responseHeaderModified', responseModifiedHeader)
 
   if (!!response.headers.get('content-type') &&
-    !['html', 'css', 'javascript'].some((type)
-      => response.headers.get('content-type').includes(type))) {
-
+    !['html', 'css', 'javascript'].some((type) => response.headers.get('content-type').includes(type))) {
     return response
   }
 
