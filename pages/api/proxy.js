@@ -15,9 +15,9 @@ export default async function handler(req) {
   })
 
 
-  console.log('requestHeadwer', requestHeader)
+  console.log('requestHeadwer', req.nextUrl.href, requestHeader)
 
-const host = req.headers.get('host')
+  const host = req.headers.get('host')
 
   requestHeader.map((item) => {
     req.headers.set(Object.keys(item)[0],
@@ -29,11 +29,12 @@ const host = req.headers.get('host')
   req.headers.forEach((value, key) => {
     requestModifiedHeader.push({ [key]: value })
   })
+  const newUrl = `${req.nextUrl.pathname}${req.nextUrl.search}`;
 
-  console.log('requestModifiedHeader', requestModifiedHeader)
+  console.log('requestModifiedHeader', req.nextUrl.href, newUrl, requestModifiedHeader)
 
 
- // console.log('next url', req.nextUrl);
+  // console.log('next url', req.nextUrl);
   const newUrl = `${req.nextUrl.pathname}${req.nextUrl.search}`;
   const response = await fetch(`${process.env.REWRITE_HOST}${newUrl}`, {
     method: req.method
