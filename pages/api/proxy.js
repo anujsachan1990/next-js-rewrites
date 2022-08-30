@@ -3,7 +3,7 @@ export const config = {
   runtime: 'experimental-edge',
 }
 
-export default async function handler(req, res) {
+export default async function handler(req) {
   let responseHeader = [];
   let requestHeader = [];
   let requestModifiedHeader = [];
@@ -17,13 +17,12 @@ export default async function handler(req, res) {
 
   console.log('requestHeader', requestHeader)
 
-  // requestHeader.replaceAll('.vercel.app', '.countryroad.com.au')
-  // requestHeader.replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au')
+
 
   requestHeader.map((item) => {
     req.headers.set(Object.keys(item)[0],
-      item[Object.keys(item)[0]].replaceAll('.vercel.app', '.countryroad.com.au')
-        .replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au'))
+      item[Object.keys(item)[0]].replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au')
+        .replaceAll('.vercel.app', '.countryroad.com.au'))
 
   })
 
@@ -51,10 +50,11 @@ export default async function handler(req, res) {
 
   responseHeader.map((item) => {
 
- 
+
     myHeaders.set(Object.keys(item)[0],
-      item[Object.keys(item)[0]].replaceAll('.countryroad.com.au', '.vercel.app')
-        .replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app'))
+      item[Object.keys(item)[0]].replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app')
+        .replaceAll('.countryroad.com.au', '.vercel.app')
+    )
 
   })
 
@@ -62,8 +62,7 @@ export default async function handler(req, res) {
     responseModifiedHeader.push({ [key]: value })
   })
 
-  // responseHeader.replaceAll('.countryroad.com.au', '.vercel.app')
-  // responseHeader.replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app')
+
 
   console.log('responseHeaderModified', responseModifiedHeader)
 
@@ -78,6 +77,6 @@ export default async function handler(req, res) {
   const modifiedtext = text.replaceAll(process.env.REWRITE_HOST, req.nextUrl.origin)
   const { headers } = response
   console.log("response headers", headers)
-  return new Response(modifiedtext, { headers : myHeaders })
+  return new Response(modifiedtext, { headers: myHeaders })
 }
 
