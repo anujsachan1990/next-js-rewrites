@@ -4,21 +4,26 @@ export const config = {
 }
 
 export default async function handler(req) {
-  let responseHeader = '';
-  let requestHeader = '';
+  let responseHeader = [];
+  let requestHeader = [];
 
   console.log('cookies', req.cookies)
   req.headers.forEach((value, key) => {
-    requestHeader += `${key}: ${value}\n`
+    requestHeader.push({ key: value })
   })
-  
+
+
   console.log('requestHeader', requestHeader)
-  
-  requestHeader.replaceAll( '.vercel.app', '.countryroad.com.au')
-  requestHeader.replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au' )
-  
-  req.headers.set(':authority','www.countryroad.com.au')
-  
+
+  // requestHeader.replaceAll('.vercel.app', '.countryroad.com.au')
+  // requestHeader.replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au')
+
+  requestHeader.map((item) => {
+    req.headers.set(item.key, item.value.replaceAll('.vercel.app', '.countryroad.com.au'))
+    req.headers.set(item.key, item.value.replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au'))
+  })
+  //req.headers.set(':authority','www.countryroad.com.au')
+
   console.log('requestHeaderModified', requestHeader)
 
   const response = await fetch(`${process.env.REWRITE_HOST}${req.nextUrl.pathname}`, {
@@ -28,15 +33,19 @@ export default async function handler(req) {
   console.log("response header--->")
 
   response.headers.forEach((value, key) => {
-    responseHeader += `${key}: ${value}\n`
+    responseHeader.push({ key: value })
   })
 
   console.log('responseHeader', responseHeader)
-  
 
-  responseHeader.replaceAll('.countryroad.com.au', '.vercel.app')
-  responseHeader.replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app')
-  
+  responseHeader.map((item) => {
+    response.headers.set(item.key, item.value.replaceAll('.countryroad.com.au', '.vercel.app'))
+    response.headers.set(item.key, item.value.replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app'))
+  })
+
+  // responseHeader.replaceAll('.countryroad.com.au', '.vercel.app')
+  // responseHeader.replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app')
+
   console.log('responseHeaderModified', responseHeader)
 
   if (!!response.headers.get('content-type') && !['html', 'css', 'javascript'].some((type) => response.headers.get('content-type').includes(type))) {
