@@ -1,5 +1,5 @@
 module.exports = {
-
+  trailingSlash: true,
   // basePath: '',
   // reactStrictMode: true,
 
