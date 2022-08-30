@@ -20,7 +20,7 @@ export default async function handler(req) {
 
   })
 
-  response.headers.set('set-cookie','anuj is here')
+  response.headers.set('cookie','anuj is here')
 
   console.log("response header--->")
 
