@@ -50,7 +50,7 @@ export default async function handler(req, res) {
   responseHeader.map((item) => {
 
     if(Object.keys(item)[0]==='set-cookie'){
-      res.setHeader(Object.keys(item)[0],
+      response.headers.set(Object.keys(item)[0],
       item[Object.keys(item)[0]].replaceAll('.countryroad.com.au', '.vercel.app')
         .replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app'))  
     }
