@@ -34,19 +34,19 @@ export default async function handler(req) {
   console.log('requestModifiedHeader', req.nextUrl.href, newUrl, requestModifiedHeader)
 
 
-  // console.log('next url', req.nextUrl);
+  console.log('next url', req.nextUrl);
 
   const response = await fetch(`${process.env.REWRITE_HOST}${newUrl}`, {
     method: req.method
 
   })
-  //console.log("response header--->")
+console.log("response header--->")
 
   response.headers.forEach((value, key) => {
     responseHeader.push({ [key]: value })
   })
 
-  // console.log('responseHeader', responseHeader)
+ console.log('responseHeader', responseHeader)
 
   const myHeaders = new Headers();
 
@@ -66,7 +66,7 @@ export default async function handler(req) {
 
 
 
-  // console.log('responseHeaderModified', responseModifiedHeader)
+  console.log('responseHeaderModified', responseModifiedHeader)
 
   if (!!response.headers.get('content-type') &&
     !['html', 'css', 'javascript'].some((type) => response.headers.get('content-type').includes(type))) {
