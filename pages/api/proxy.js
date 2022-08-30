@@ -15,7 +15,7 @@ export default async function handler(req) {
   })
   console.log('requestHeader', requestHeader)
 
-  requestHeaderModified = requestHeader.headers.replaceAll('.vercel.app', '.countryroad.com.au').replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au')
+  requestHeaderModified = requestHeader.replaceAll('.vercel.app', '.countryroad.com.au').replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au')
 
 
   console.log('requestHeaderModified', requestHeaderModified)
