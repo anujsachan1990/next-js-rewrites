@@ -15,13 +15,19 @@ export default async function handler(req) {
   })
   console.log('requestHeader', requestHeader)
 
-  requestHeaderModified = requestHeader.replaceAll('.vercel.app', '.countryroad.com.au').replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au')
+  // requestHeaderModified = requestHeader.replaceAll('.vercel.app', '.countryroad.com.au').replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au')
+  const headers = [
+    ['Set-Cookie', 'greeting=hello'],
+    ['Set-Cookie', 'name=world']
+  ];
+  const myHeaders = new Headers(headers);
 
 
   console.log('requestHeaderModified', requestHeaderModified)
 
   const response = await fetch(`${process.env.REWRITE_HOST}${req.nextUrl.pathname}`, {
     method: req.method,
+    headers: myHeaders
   })
   console.log("response header--->")
 
