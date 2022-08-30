@@ -6,6 +6,7 @@ export const config = {
 export default async function handler(req) {
   let responseHeader = [];
   let requestHeader = [];
+  let requestModifiedHeader = [];
 
   console.log('cookies', req.cookies)
   req.headers.forEach((value, key) => {
@@ -24,12 +25,12 @@ export default async function handler(req) {
   })
 
   req.headers.forEach((value, key) => {
-    requestHeader.push({ [key]: value })
+    requestModifiedHeader.push({ [key]: value })
   })
 
-  //req.headers.set(':authority','www.countryroad.com.au')
+  console.log('requestModifiedHeader', requestModifiedHeader)
 
-  console.log('requestHeaderModified', requestHeader)
+
 
   const response = await fetch(`${process.env.REWRITE_HOST}${req.nextUrl.pathname}`, {
     method: req.method
