@@ -18,8 +18,8 @@ export default async function handler(req) {
   // requestHeader.replaceAll('.vercel.app', '.countryroad.com.au')
   // requestHeader.replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au')
 
-  requestHeader.map((item, index) => {
-    req.headers.set(Object.keys(item)[index], item[Object.keys(item)[index]].replaceAll('.vercel.app', '.countryroad.com.au').replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au'))
+  requestHeader.map((item) => {
+    req.headers.set(Object.keys(item)[0], item[Object.keys(item)[0]].replaceAll('.vercel.app', '.countryroad.com.au').replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au'))
 
   })
   //req.headers.set(':authority','www.countryroad.com.au')
@@ -39,7 +39,7 @@ export default async function handler(req) {
   console.log('responseHeader', responseHeader)
 
   responseHeader.map((item) => {
-    responseHeader.headers.set(Object.keys(item)[index], item[Object.keys(item)[index]].replaceAll('.countryroad.com.au', '.vercel.app').replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app'))
+    responseHeader.headers.set(Object.keys(item)[0], item[Object.keys(item)[0]].replaceAll('.countryroad.com.au', '.vercel.app').replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app'))
   })
 
   // responseHeader.replaceAll('.countryroad.com.au', '.vercel.app')
