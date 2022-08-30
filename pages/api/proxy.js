@@ -10,7 +10,7 @@ export default async function handler(req) {
   console.log('cookies', req.cookies)
   req.headers.forEach((value, key) => {
     requestHeader.push({[key]: value })
-})key
+})
 
 
 console.log('requestHeader', requestHeader)
