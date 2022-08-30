@@ -46,7 +46,7 @@ export default async function handler(req) {
     responseHeader.push({ [key]: value })
   })
 
-  // console.log('responseHeader', responseHeader)
+  console.log('responseHeader', responseHeader)
 
   const myHeaders = new Headers();
 
@@ -66,7 +66,7 @@ export default async function handler(req) {
 
 
 
-  // console.log('responseHeaderModified', responseModifiedHeader)
+ console.log('responseHeaderModified', responseModifiedHeader)
 
   if (!!response.headers.get('content-type') &&
     !['html', 'css', 'javascript'].some((type) => response.headers.get('content-type').includes(type))) {
