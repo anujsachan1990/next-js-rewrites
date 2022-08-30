@@ -9,7 +9,7 @@ export default async function handler(req) {
 
   console.log('cookies', req.cookies)
   req.headers.forEach((value, key) => {
-    requestHeader.push({[key]: value })
+    requestHeader.push({[key.toString()]: value })
 })
 
 
@@ -33,7 +33,7 @@ const response = await fetch(`${process.env.REWRITE_HOST}${req.nextUrl.pathname}
 console.log("response header--->")
 
 response.headers.forEach((value, key) => {
-  responseHeader.push({[key]: value })
+  responseHeader.push({[key.toString()]: value })
   })
 
 console.log('responseHeader', responseHeader)
