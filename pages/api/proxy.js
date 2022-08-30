@@ -5,29 +5,23 @@ export const config = {
 
 export default async function handler(req) {
   let responseHeader = '';
-  let responseHeaderModified = '';
   let requestHeader = '';
-  let requestHeaderModified = '';
 
-  console.log('cookies', req.headers)
+  console.log('cookies', req.cookies)
   req.headers.forEach((value, key) => {
     requestHeader += `${key}: ${value}\n`
   })
   console.log('requestHeader', requestHeader)
-
-  // requestHeaderModified = requestHeader.replaceAll('.vercel.app', '.countryroad.com.au').replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au')
-  const headers1 = [
-    ['Set-Cookie', 'greeting=hello'],
-    ['Set-Cookie', 'name=world']
-  ];
-  const myHeaders = new Headers(headers1);
-
-
-  console.log('requestHeaderModified', requestHeaderModified)
+  
+  requestHeader.replaceAll( '.vercel.app', '.countryroad.com.au')
+  requestHeader.replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au' )
+  
+  console.log('requestHeaderModified', requestHeader)
 
   const response = await fetch(`${process.env.REWRITE_HOST}${req.nextUrl.pathname}`, {
     method: req.method,
-    headers: myHeaders
+    headers: requestHeader
+
   })
   console.log("response header--->")
 
@@ -36,12 +30,12 @@ export default async function handler(req) {
   })
 
   console.log('responseHeader', responseHeader)
+  
 
-
-  responseHeaderModified = responseHeader.replaceAll('.countryroad.com.au', '.vercel.app').replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app')
-
-
-  console.log('responseHeaderModified', responseHeaderModified)
+  responseHeader.replaceAll('.countryroad.com.au', '.vercel.app')
+  responseHeader.replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app')
+  
+  console.log('responseHeaderModified', responseHeader)
 
   if (!!response.headers.get('content-type') && !['html', 'css', 'javascript'].some((type) => response.headers.get('content-type').includes(type))) {
 
