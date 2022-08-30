@@ -16,11 +16,11 @@ export default async function handler(req) {
   console.log('requestHeader', requestHeader)
 
   // requestHeaderModified = requestHeader.replaceAll('.vercel.app', '.countryroad.com.au').replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au')
-  const headers = [
+  const headers1 = [
     ['Set-Cookie', 'greeting=hello'],
     ['Set-Cookie', 'name=world']
   ];
-  const myHeaders = new Headers(headers);
+  const myHeaders = new Headers(headers1);
 
 
   console.log('requestHeaderModified', requestHeaderModified)
