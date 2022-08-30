@@ -9,7 +9,7 @@ export default async function handler(req) {
 
   console.log('cookies', req.cookies)
   req.headers.forEach((value, key) => {
-    requestHeader.push([`${key}: ${value.replaceAll('.vercel.app', '.countryroad.com.au').replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au')}`])
+    requestHeader.push([key, `${value.replaceAll('.vercel.app', '.countryroad.com.au').replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au')}`])
   })
   console.log('requestHeader', requestHeader)
 
@@ -27,7 +27,7 @@ export default async function handler(req) {
   console.log("response header--->")
 
   response.headers.forEach((value, key) => {
-    responseHeader += [`${key}: ${value.replaceAll('.countryroad.com.au', '.vercel.app').replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app')}`]
+    responseHeader += [key, `${value.replaceAll('.countryroad.com.au', '.vercel.app').replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app')}`]
   })
 
   console.log('responseHeader', responseHeader)
