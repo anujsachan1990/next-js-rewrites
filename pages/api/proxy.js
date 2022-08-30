@@ -21,7 +21,10 @@ export default async function handler(req) {
   console.log('requestHeaderModified', requestHeaderModified)
 
   const response = await fetch(`${process.env.REWRITE_HOST}${req.nextUrl.pathname}`, {
-    method: req.method
+    method: req.method,
+    headers: {
+      name: 'anuj'
+    },
 
   })
   console.log("response header--->")
