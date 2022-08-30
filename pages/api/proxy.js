@@ -46,7 +46,7 @@ export default async function handler(req, res) {
   console.log('responseHeader', responseHeader)
 
   responseHeader.map((item) => {
-    res.headers.set(Object.keys(item)[0], item[Object.keys(item)[0]].replaceAll('.countryroad.com.au', '.vercel.app').replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app'))
+    response.headers.set(Object.keys(item)[0], item[Object.keys(item)[0]].replaceAll('.countryroad.com.au', '.vercel.app').replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app'))
 
   })
 
