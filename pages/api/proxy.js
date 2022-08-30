@@ -20,7 +20,7 @@ export default async function handler(req) {
   const host = req.headers.get('host')
 
   requestHeader.map((item) => {
-    req.headers.append(Object.keys(item)[0],
+    req.headers.set(Object.keys(item)[0],
       item[Object.keys(item)[0]].replaceAll(host, 'www.countryroad.com.au')
         .replaceAll('.vercel.app', '.countryroad.com.au'))
 
@@ -29,33 +29,33 @@ export default async function handler(req) {
   req.headers.forEach((value, key) => {
     requestModifiedHeader.push({ [key]: value })
   })
-  const newUrl = `${req.nextUrl.pathname}${req.nextUrl.search}`.replaceAll('(', '%28').replaceAll(')', '%29').replaceAll('%2A', '%2a').replaceAll('%2B', '%2b').replaceAll('%2C', '%2c').replaceAll('%2D', '%2d').replaceAll('%2E', '%2e').replaceAll('%2F', '%2f')
+  const newUrl = `${req.nextUrl.pathname}${req.nextUrl.search}`.replaceAll('(', '%28').replaceAll(')', '%29').replaceAll('%2A', '%2a').replaceAll('%2B', '%2b').replaceAll('%2C', '%2c').replaceAll('%2D', '%2d').replaceAll('%2E', '%2e').replaceAll('%2F', '%2f').replaceAll('%2G', )
 
   console.log('requestModifiedHeader', req.nextUrl.href, newUrl, requestModifiedHeader)
 
 
-  console.log('next url', req.nextUrl);
-
+  // console.log('next url', req.nextUrl);
+ 
   const response = await fetch(`${process.env.REWRITE_HOST}${newUrl}`, {
     method: req.method
 
   })
-console.log("response header--->")
+  //console.log("response header--->")
 
   response.headers.forEach((value, key) => {
     responseHeader.push({ [key]: value })
   })
 
- console.log('responseHeader', responseHeader)
+  // console.log('responseHeader', responseHeader)
 
   const myHeaders = new Headers();
 
   responseHeader.map((item) => {
 
 
-    myHeaders.append(Object.keys(item)[0],
+    myHeaders.set(Object.keys(item)[0],
       item[Object.keys(item)[0]].replaceAll('www.countryroad.com.au', host)
-        .replaceAll('.countryroad.com.au', '.vercel.app')
+        .replaceAll('.countryroad.com.au', host)
     )
 
   })
@@ -66,7 +66,7 @@ console.log("response header--->")
 
 
 
-  console.log('responseHeaderModified', responseModifiedHeader)
+  // console.log('responseHeaderModified', responseModifiedHeader)
 
   if (!!response.headers.get('content-type') &&
     !['html', 'css', 'javascript'].some((type) => response.headers.get('content-type').includes(type))) {
