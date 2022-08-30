@@ -13,15 +13,15 @@ export default async function handler(req) {
   })
   console.log('requestHeader', requestHeader)
   
-  req.headers.set('set-cookie', 'anuj is here111')
+  requestHeader.replaceAll( '.vercel.app', '.countryroad.com.au')
+  requestHeader.replaceAll('next-js-rewrites-anuj.vercel.app', 'www.countryroad.com.au' )
+  
+  console.log('requestHeaderModified', requestHeader)
 
   const response = await fetch(`${process.env.REWRITE_HOST}${req.nextUrl.pathname}`, {
-    method: req.method,
+    method: req.method
 
   })
-
- // response.headers.set('cookie','anuj is here')
-
   console.log("response header--->")
 
   response.headers.forEach((value, key) => {
@@ -31,7 +31,10 @@ export default async function handler(req) {
   console.log('responseHeader', responseHeader)
   
 
-
+  responseHeader.replaceAll('.countryroad.com.au', '.vercel.app')
+  responseHeader.replaceAll('www.countryroad.com.au', 'next-js-rewrites-anuj.vercel.app')
+  
+  console.log('responseHeaderModified', responseHeader)
 
   if (!!response.headers.get('content-type') && !['html', 'css', 'javascript'].some((type) => response.headers.get('content-type').includes(type))) {
 
